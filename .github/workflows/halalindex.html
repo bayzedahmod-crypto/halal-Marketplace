@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="bn" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">হালাল ফ্রিল্যান্সিং মার্কেটপ্লেস - নৈতিক কাজের বিশ্বব্যাপী প্ল্যাটফর্ম</title>
+    <!-- কালপুরুষ ক্লাসিক ফন্ট ও ফন্ট অসাম -->
+    <link href="https://fonts.googleapis.com/css2?family=Kalpurush&family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f766e;
+            --primary-dark: #115e59;
+            --secondary: #f0fdf4;
+            --accent: #d97706;
+            --text-dark: #1f2937;
+            --bg-light: #f8fafc;
+            --danger: #dc2626;
+            --success: #16a34a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Kalpurush', 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* হেডার ও নেভিগেশন */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-area h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-area p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .top-widgets {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .clock-calendar {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* ল্যাঙ্গুয়েজ সুইচার বাটন */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* মেইন কন্টেন্ট লেআউট */
+        .main-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+        }
+
+        @media(max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+
+        .warning-banner {
+            background: #fffbeb;
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* সিস্টেম স্ট্যাটাস ও টাইমার */
+        .system-status {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        /* পোস্ট সাবমিশন ফর্ম */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .char-counter {
+            font-size: 0.8rem;
+            color: #64748b;
+            text-align: right;
+            margin-top: 0.25rem;
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-submit:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        /* কাজের তালিকা ও পোস্ট কার্ড */
+        .post-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        .post-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-price {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .timer-badge {
+            background: #fee2e2;
+            color: var(--danger);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        /* ফুটার */
+        footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার সেクション -->
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <h1 id="site-title">হালাল ফ্রিল্যান্সিং মার্কেটপ্লেস</h1>
+                <p id="site-subtitle">১০০% বিজ্ঞাপন ও প্রতারণা মুক্ত বিশ্বব্যাপী নৈতিক কাজের প্ল্যাটফর্ম</p>
+            </div>
+            <div class="top-widgets">
+                <div class="clock-calendar" id="live-clock-calendar">
+                    লোড হচ্ছে...
+                </div>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" onclick="changeLanguage('bn')">বাংলা</button>
+                    <button class="lang-btn" onclick="changeLanguage('en')">English</button>
+                    <button class="lang-btn" onclick="changeLanguage('ar')">العربية</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- বাম দিক: কাজের পোস্ট ও তালিকা -->
+        <div>
+            <!-- সতর্কমূলক নোটিশ -->
+            <div class="warning-banner">
+                <i class="fa-solid fa-shield-halved"></i> 
+                <span id="notice-text">বিশেষ ঘোষণা: এই প্ল্যাটফর্মে কোনো ধরনের বিজ্ঞাপন দেখা, ক্লিক করা বা প্রতারণামূলক কাজ কঠোরভাবে নিষিদ্ধ। শুধুমাত্র প্রকৃত ও হালাল মাইক্রো-টাস্ক ও প্রফেশনাল কাজ অনুমোদিত।</span>
+            </div>
+
+            <!-- সিস্টেম স্ট্যাটাস (অটো ১ ঘণ্টা অন / ২ ঘণ্টা অফ নোটিশ) -->
+            <div class="system-status" id="system-status-box">
+                পোস্ট সাবমিশন সিস্টেম সচল রয়েছে।
+            </div>
+
+            <!-- পোস্ট করার ফর্ম -->
+            <div class="card">
+                <h3 id="form-heading" style="margin-bottom: 1rem;"><i class="fa-solid fa-plus-circle"></i> নতুন কাজের পোস্ট করুন (অ্যাডমিন এপ্রুভাল: bayzedahmod@gmail.com)</h3>
+                <form id="jobForm" onsubmit="handlePostSubmit(event)">
+                    <div class="form-group">
+                        <label id="lbl-title" for="jobTitle">কাজের শিরোনাম / ক্যাটাগরি:</label>
+                        <select id="jobCategory" required>
+                            <option value="ডেটা এন্ট্রি ও প্রসেসিং">ডেটা এন্ট্রি ও প্রসেসিং (স্বয়ংক্রিয় প্রাইস আপডেট)</option>
+                            <option value="রাইটিং ও অনুবাদ">রাইটিং ও অনুবাদ (স্বয়ংক্রিয় প্রাইস আপডেট)</option>
+                            <option value="গ্রাফিক্স ও ডিজাইন">গ্রাফিক্স ও ডিজাইন (স্বয়ংক্রিয় প্রাইস আপডেট)</option>
+                            <option value="টেকনিক্যাল সাপোর্ট">টেকনিক্যাল সাপোর্ট (স্বয়ংক্রিয় প্রাইস আপডেট)</option>
+                            <option value="একাডেমিক সার্ভে ও ফিডব্যাক">একাডেমিক সার্ভে ও ফিডব্যাক (স্বয়ংক্রিয় প্রাইস আপডেট)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="lbl-desc" for="jobDescription">কাজের বিবরণ (সর্বোচ্চ ১০০ অক্ষর):</label>
+                        <textarea id="jobDescription" rows="3" maxlength="100" placeholder="কাজের বিবরণ লিখুন (১০০ অক্ষরের মধ্যে)..." oninput="checkCharLimit()" required></textarea>
+                        <div class="char-counter"><span id="charCount">0</span>/100</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="lbl-email" for="userEmail">আপনার ইমেইল (যোগাযোগের জন্য):</label>
+                        <input type="email" id="userEmail" placeholder="bayzedahmod@gmail.com" required>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="submit-btn">পোস্ট জমা দিন (Admin Approval)</button>
+                </form>
+            </div>
+
+            <!-- লাইভ কাজের তালিকা -->
+            <div class="card">
+                <h3 id="feed-heading" style="margin-bottom: 1rem;"><i class="fa-solid fa-list-check"></i> বর্তমান লাইভ কাজের তালিকা (৩ ঘণ্টা পর স্বয়ংক্রিয় ডিলিট)</h3>
+                <div id="jobListContainer">
+                    <!-- ডাইনামিক পোস্ট এখানে শো করবে -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ডান দিক: প্রি-মেইড টেমপ্লেট ও উইজেট -->
+        <div>
+            <div class="card">
+                <h3 id="quick-template-title" style="margin-bottom: 1rem;"><i class="fa-solid fa-bolt"></i> রেডিমেড কাজের নমুনা</h3>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;" id="quick-template-desc">ইমেইল যুক্ত করে তাৎক্ষণিকভাবে এই কাজগুলো এপ্রুভালের জন্য জমা দিতে পারেন:</p>
+                
+                <div style="background: #f1f5f9; padding: 0.8rem; border-radius: 6px; margin-bottom: 0.8rem; font-size: 0.9rem;">
+                    <strong>ডেটা এন্ট্রি:</strong> প্রোডাক্ট শিট সাজানো। <br><span style="color:var(--success);" class="dynamic-price-tag">মূল্য: $15 (স্বয়ংক্রিয় আপডেট)</span>
+                    <button onclick="fillTemplate('ডেটা এন্ট্রি ও প্রসেসিং', 'প্রোডাক্ট শিট সাজানো ও সঠিক কলামে ডেটা এন্ট্রি করা।')" style="margin-top:0.5rem; display:block; background:var(--primary); color:white; border:none; padding:0.3rem 0.6rem; border-radius:4px; cursor:pointer;">ব্যবহার করুন</button>
+                </div>
+
+                <div style="background: #f1f5f9; padding: 0.8rem; border-radius: 6px; margin-bottom: 0.8rem; font-size: 0.9rem;">
+                    <strong>অনুবাদ:</strong> বাংলা থেকে ইংরেজি আর্টিকেল ট্রান্সলেশন। <br><span style="color:var(--success);" class="dynamic-price-tag">মূল্য: $25 (স্বয়ংক্রিয় আপডেট)</span>
+                    <button onclick="fillTemplate('রাইটিং ও অনুবাদ', 'বাংলা থেকে ইংরেজি তথ্যবহুল আর্টিকেল নির্ভুল অনুবাদ।')" style="margin-top:0.5rem; display:block; background:var(--primary); color:white; border:none; padding:0.3rem 0.6rem; border-radius:4px; cursor:pointer;">ব্যবহার করুন</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 id="security-title" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-lock"></i> নিরাপত্তা ও নীতিমালা</h3>
+                <ul style="padding-left: 20px; font-size: 0.9rem; color: #475569;">
+                    <li id="sec-1">কোনো ধরনের অ্যাড ক্লিক বা ফেক টাস্ক নেই।</li>
+                    <li id="sec-2">প্রতি ১ ঘণ্টা পর পোস্ট অপশন ২ ঘণ্টা স্বয়ংক্রিয়ভাবে বন্ধ থাকে।</li>
+                    <li id="sec-3">সকল পোস্ট সর্বোচ্চ ৩ ঘণ্টা লাইভ থাকে।</li>
+                    <li id="sec-4">অ্যাডমিন যোগাযোগের ইমেইল: bayzedahmod@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ফুটার -->
+    <footer>
+        <p id="footer-text">&copy; ২০২৬ ফ্রিল্যান্সিং মার্কেটপ্লেস | সর্বস্বত্ব সংরক্ষিত। নৈতিক ও হালাল কর্মসংস্থান।</p>
+    </footer>
+
+    <!-- জাভাস্ক্রিপ্ট লজিক -->
+    <script>
+        // ভাষা রূপান্তর ডিকশনারি
+        const translations = {
+            bn: {
+                title: "হালাল ফ্রিল্যান্সিং মার্কেটপ্লেস - নৈতিক কাজের বিশ্বব্যাপী প্ল্যাটফর্ম",
+                siteTitle: "হালাল ফ্রিল্যান্সিং মার্কেটপ্লেস",
+                siteSubtitle: "১০০% বিজ্ঞাপন ও প্রতারণা মুক্ত বিশ্বব্যাপী নৈতিক কাজের প্ল্যাটফর্ম",
+                noticeText: "বিশেষ ঘোষণা: এই প্ল্যাটফর্মে কোনো ধরনের বিজ্ঞাপন দেখা, ক্লিক করা বা প্রতারণামূলক কাজ কঠোরভাবে নিষিদ্ধ। শুধুমাত্র প্রকৃত ও হালাল মাইক্রো-টাস্ক ও প্রফেশনাল কাজ অনুমোদিত।",
+                formHeading: "নতুন কাজের পোস্ট করুন (অ্যাডমিন এপ্রুভাল: bayzedahmod@gmail.com)",
+                lblTitle: "কাজের শিরোনাম / ক্যাটাগরি:",
+                lblDesc: "কাজের বিবরণ (সর্বোচ্চ ১০০ অক্ষর):",
+                lblEmail: "আপনার ইমেইল (যোগাযোগের জন্য):",
+                submitBtn: "পোস্ট জমা দিন (Admin Approval)",
+                feedHeading: "বর্তমান লাইভ কাজের তালিকা (৩ ঘণ্টা পর স্বয়ংক্রিয় ডিলিট)",
+                quickTemplateTitle: "রেডিমেড কাজের নমুনা",
+                quickTemplateDesc: "ইমেইল যুক্ত করে তাৎক্ষণিকভাবে এই কাজগুলো এপ্রুভালের জন্য জমা দিতে পারেন:",
+                securityTitle: "নিরাপত্তা ও নীতিমালা",
+                sec1: "কোনো ধরনের অ্যাড ক্লিক বা ফেক টাস্ক নেই।",
+                sec2: "প্রতি ১ ঘণ্টা পর পোস্ট অপশন ২ ঘণ্টা স্বয়ংক্রিয়ভাবে বন্ধ থাকে।",
+                sec3: "সকল পোস্ট সর্বোচ্চ ৩ ঘণ্টা লাইভ থাকে।",
+                sec4: "অ্যাডমিন যোগাযোগের ইমেইল: bayzedahmod@gmail.com",
+                footerText: "&copy; ২০২৬ ফ্রিল্যান্সিং মার্কেটপ্লেস | সর্বস্বত্ব সংরক্ষিত। নৈতিক ও হালাল কর্মসংস্থান।"
+            },
+            en: {
+                title: "Halal Freelancing Marketplace - Global Ethical Work Platform",
+                siteTitle: "Halal Freelancing Marketplace",
+                siteSubtitle: "100% Ad-Free & Scam-Free Global Ethical Work Platform",
+                noticeText: "Special Notice: Ad-viewing, clicking, or fraudulent tasks are strictly prohibited. Only genuine and halal micro-tasks and professional jobs are allowed.",
+                formHeading: "Post a New Job (Admin Approval: bayzedahmod@gmail.com)",
+                lblTitle: "Job Category:",
+                lblDesc: "Job Description (Max 100 characters):",
+                lblEmail: "Your Email (for contact):",
+                submitBtn: "Submit Post (Admin Approval)",
+                feedHeading: "Current Live Job Feed (Auto-deletes after 3 hours)",
+                quickTemplateTitle: "Ready-made Job Templates",
+                quickTemplateDesc: "Add your email and instantly submit these jobs for approval:",
+                securityTitle: "Security & Guidelines",
+                sec1: "No ad-clicking or fake tasks.",
+                sec2: "Posting pauses for 2 hours after every 1 hour of active time.",
+                sec3: "All posts stay live for a maximum of 3 hours.",
+                sec4: "Admin Contact Email: bayzedahmod@gmail.com",
+                footerText: "&copy; 2026 Halal Freelancing Marketplace | All Rights Reserved. Ethical & Halal Employment."
+            },
+            ar: {
+                title: "سوق العمل الحر الحلال - منصة العمل الأخلاقي العالمية",
+                siteTitle: "سوق العمل الحر الحلال",
+                siteSubtitle: "منصة عمل أخلاقية عالمية خالالية 100% من الإعلانات والاحتلال",
+                noticeText: "إشعار خاص: يُمنع منعاً باتاً مشاهدة الإعلانات أو النقر أو المهام الاحتيالية. سُمح فقط بالمهام المصغرة الحقيقية والحلال.",
+                formHeading: "انشر عملاً جديداً (موافقة المشرف: bayzedahmod@gmail.com)",
+                lblTitle: "فئة العمل:",
+                lblDesc: "وصف الوظيفة (أقصى 100 حرف):",
+                lblEmail: "بريدك الإلكتروني (للتواصل):",
+                submitBtn: "إرسال المنشور (موافقة المشرف)",
+                feedHeading: "قائمة الوظائف المباشرة الحالية (حذف تلقائي بعد 3 ساعات)",
+                quickTemplateTitle: "قوالب العمل الجاهزة",
+                quickTemplateDesc: "أضف بريدك الإلكتروني وأرسل هذه الوظائف للموافقة الفورية:",
+                securityTitle: "الأمان والسياسات",
+                sec1: "لا توجد نقرات إعلانية أو مهام وهمية.",
+                sec2: "يتوقف النشر لمدة ساعتين بعد كل ساعة نشاط.",
+                sec3: "تبقى جميع المنشورات حية لمدة أقصاها 3 ساعات.",
+                sec4: "بريد التواصل للمشرف: bayzedahmod@gmail.com",
+                footerText: "&copy; 2026 سوق العمل الحر الحلال | جميع الحقوق محفوظة. توظيف أخلاقي وحلال."
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const t = translations[lang];
+            document.getElementById('page-title').innerText = t.title;
+            document.getElementById('site-title').innerText = t.siteTitle;
+            document.getElementById('site-subtitle').innerText = t.siteSubtitle;
+            document.getElementById('notice-text').innerText = t.noticeText;
+            document.getElementById('form-heading').innerHTML = `<i class="fa-solid fa-plus-circle"></i> ${t.formHeading}`;
+            document.getElementById('lbl-title').innerText = t.lblTitle;
+            document.getElementById('lbl-desc').innerText = t.lblDesc;
+            document.getElementById('lbl-email').innerText = t.lblEmail;
+            document.getElementById('submit-btn').innerText = t.submitBtn;
+            document.getElementById('feed-heading').innerHTML = `<i class="fa-solid fa-list-check"></i> ${t.feedHeading}`;
+            document.getElementById('quick-template-title').innerHTML = `<i class="fa-solid fa-bolt"></i> ${t.quickTemplateTitle}`;
+            document.getElementById('quick-template-desc').innerText = t.quickTemplateDesc;
+            document.getElementById('security-title').innerHTML = `<i class="fa-solid fa-lock"></i> ${t.securityTitle}`;
+            document.getElementById('sec-1').innerText = t.sec1;
+            document.getElementById('sec-2').innerText = t.sec2;
+            document.getElementById('sec-3').innerText = t.sec3;
+            document.getElementById('sec-4').innerText = t.sec4;
+            document.getElementById('footer-text').innerHTML = t.footerText;
+
+            if(lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+            }
+        }
+
+        // লাইভ ঘড়ি এবং আরবি, ইংরেজি ক্যালেন্ডার আপডেট
+        function updateClockAndCalendar() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const englishDate = now.toLocaleDateString('en-US', options);
+            const banglaDate = now.toLocaleDateString('bn-BD', options);
+            
+            // হিজরি বা আরবি ক্যালেন্ডার অনুমানিক ফরম্যাট
+            let optionsHijri = { calendar: 'islamic', year: 'numeric', month: 'long', day: 'numeric' };
+            let arabicDate = new Intl.DateTimeFormat('ar-SA-u-ca-islamic', optionsHijri).format(now);
+            
+            let timeString = now.toLocaleTimeString();
+
+            document.getElementById('live-clock-calendar').innerHTML = `
+                <i class="fa-regular fa-clock"></i> ${timeString} <br>
+                <i class="fa-solid fa-calendar-days"></i> ${englishDate} | ${arabicDate}
+            `;
+        }
+        setInterval(updateClockAndCalendar, 1000);
+        updateClockAndCalendar();
+
+        // ১০০ অক্ষরের বেশি লেখা নিষেধ চেক
+        function checkCharLimit() {
+            const desc = document.getElementById('jobDescription');
+            const count = desc.value.length;
+            document.getElementById('charCount').innerText = count;
+            if(count > 100) {
+                desc.value = desc.value.substring(0, 100);
+            }
+        }
+
+        // অটোমেটিক ১ ঘণ্টা অন / ২ ঘণ্টা অফ সিস্টেম লজিক
+        function checkPostingAvailability() {
+            const now = new Date();
+            const totalMinutes = now.getHours() * 60 + now.getMinutes();
+            const cycle = totalMinutes % 180; // ৩ ঘণ্টার সাইকেল (৬০ মি: অন + ১২০ মি: অফ)
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const statusBox = document.getElementById('system-status-box');
+
+            if (cycle < 60) {
+                // ১ম ঘণ্টা পোস্ট অপশন সচল
+                submitBtn.disabled = false;
+                statusBox.style.background = '#dcfce7';
+                statusBox.style.color = '#166534';
+                statusBox.innerText = 'সিস্টেম স্ট্যাটাস: পোস্ট সাবমিশন বর্তমানে সম্পূর্ণ সচল রয়েছে।';
+            } else {
+                // পরবর্তী ২ ঘণ্টা পোস্ট অপশন বন্ধ
+                submitBtn.disabled = true;
+                statusBox.style.background = '#fee2e2';
+                statusBox.style.color = '#991b1b';
+                statusBox.innerText = 'সিস্টেম স্ট্যাটাস: বিরতি চলছে (প্রতি ১ ঘণ্টা কাজের পর ২ ঘণ্টা পোস্ট অপশন অটোমেটিক বন্ধ থাকে)।';
+            }
+        }
+        setInterval(checkPostingAvailability, 10000);
+        checkPostingAvailability();
+
+        // ডেমো পোস্ট লিস্ট এবং অটো ৩ ঘণ্টা ডিলিট সিস্টেম
+        let jobs = [
+            {
+                id: 1,
+                category: "ডেটা এন্ট্রি ও প্রসেসিং",
+                description: "ইকমার্স পণ্যের বিবরণী সঠিক কলামে এন্ট্রি করা। (প্রতিদিনের ডাইনামিক প্রাইস আপডেট)",
+                email: "bayzedahmod@gmail.com",
+                price: "$18.50",
+                timestamp: Date.now() - (1000 * 60 * 30) // ৩০ মিনিট আগে তৈরি
+            },
+            {
+                id: 2,
+                category: "রাইটিং ও অনুবাদ",
+                description: "টেকনিক্যাল ব্লগের জন্য সংক্ষিপ্ত গাইড তৈরি।",
+                email: "bayzedahmod@gmail.com",
+                price: "$30.00",
+                timestamp: Date.now() - (1000 * 60 * 90) // ১.৫ ঘণ্টা আগে তৈরি
+            }
+        ];
+
+        function renderJobs() {
+            const container = document.getElementById('jobListContainer');
+            container.innerHTML = '';
+            
+            const currentTime = Date.now();
+            // ৩ ঘণ্টা (১০৮০০০০০ মিলি সেকেন্ড) পার হওয়া পোস্ট ফিল্টার করে বাদ দেওয়া
+            jobs = jobs.filter(job => (currentTime - job.timestamp) < (3 * 60 * 60 * 1000));
+
+            if(jobs.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:#64748b;">বর্তমানে কোনো লাইভ কাজ নেই। নতুন পোস্ট যুক্ত করুন।</p>';
+                return;
+            }
+
+            jobs.forEach(job => {
+                let timeLeft = Math.floor((3 * 60 * 60 * 1000 - (currentTime - job.timestamp)) / (1000 * 60)); // মিনিটে বাকি সময়
+                let div = document.createElement('div');
+                div.className = 'post-card';
+                div.innerHTML = `
+                    <div class="post-meta">
+                        <span><strong>ক্যাটাগরি:</strong> ${job.category}</span>
+                        <span class="timer-badge"><i class="fa-regular fa-clock"></i> ডিলিট হতে বাকি: ${timeLeft} মিনিট</span>
+                    </div>
+                    <p style="margin: 0.5rem 0; font-size: 1rem;">${job.description}</p>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.5rem;">
+                        <span class="post-price">মূল্য (স্বয়ংক্রিয় আপডেট): ${job.price}</span>
+                        <span style="font-size:0.8rem; color:#64748b;">যোগাযোগ: ${job.email}</span>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        setInterval(renderJobs, 5000); // প্রতি ৫ সেকেন্ডে রিফ্রেশ
+        renderJobs();
+
+        // ফর্ম সাবমিট হ্যান্ডলার
+        function handlePostSubmit(event) {
+            event.preventDefault();
+            const category = document.getElementById('jobCategory').value;
+            const description = document.getElementById('jobDescription').value;
+            const email = document.getElementById('userEmail').value;
+
+            // প্রতিদিনের বা প্রতিসময়ের ডাইনামিক প্রাইস জেনারেটর
+            const randomPrice = "$" + (Math.floor(Math.random() * 40) + 10).toFixed(2);
+
+            const newJob = {
+                id: Date.now(),
+                category: category,
+                description: description,
+                email: email,
+                price: randomPrice,
+                timestamp: Date.now()
+            };
+
+            jobs.unshift(newJob);
+            renderJobs();
+
+            alert(`আপনার পোস্টটি সফলভাবে জমা হয়েছে এবং অ্যাডমিন নোটিফিকেশনের জন্য bayzedahmod@gmail.com এ পাঠানো হয়েছে। এপ্রুভ হওয়ার পর এটি লাইভ ফিডে থাকবে।`);
+            document.getElementById('jobForm').reset();
+            document.getElementById('charCount').innerText = '0';
+        }
+
+        // টেমপ্লেট ফিল করার ফাংশন
+        function fillTemplate(cat, desc) {
+            document.getElementById('jobCategory').value = cat;
+            document.getElementById('jobDescription').value = desc;
+            checkCharLimit();
+            window.scrollTo({ top: 400, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
